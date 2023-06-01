@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #efebeb;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.endassignment.MainController">
+   <children>
+      <Region layoutX="-5.0" prefHeight="64.0" prefWidth="605.0" style="-fx-background-color: #3d92e7;" />
+      <Button fx:id="firstMainButton" disable="true" layoutX="221.0" layoutY="29.0" mnemonicParsing="false" onAction="#changePaneAction" prefHeight="34.0" prefWidth="123.0" style="-fx-background-color: white;" text="Lending/Receiving" textFill="#3d92e7">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="secondMainButton" layoutX="352.0" layoutY="29.0" mnemonicParsing="false" onAction="#changePaneAction" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: white;" text="Collection" textFill="#3d92e7">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="thirdMainButton" layoutX="478.0" layoutY="29.0" mnemonicParsing="false" onAction="#changePaneAction" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: white;" text="Members" textFill="#3d92e7">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Label layoutX="14.0" layoutY="14.0" text="Library Systems" textFill="#efebeb">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Pane fx:id="firstPane" layoutY="64.0" prefHeight="336.0" prefWidth="600.0">
+         <children>
+            <Region layoutX="20.0" layoutY="60.0" prefHeight="216.0" prefWidth="258.0" style="-fx-background-color: white;" />
+            <Region layoutX="319.0" layoutY="60.0" prefHeight="216.0" prefWidth="258.0" style="-fx-background-color: white;" />
+            <Button fx:id="receiveButton" disable="true" layoutX="325.0" layoutY="112.0" mnemonicParsing="false" onAction="#onButtonClickedInMain" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #3d92e7;" text="Receive Item" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="receiveItemCodeTextField" layoutX="325.0" layoutY="79.0" onKeyTyped="#onKeyTypedInMain" prefHeight="25.0" prefWidth="230.0" promptText="Item Code" />
+            <Label fx:id="nameLabel" layoutX="20.0" layoutY="16.0" text="Label">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="lendItemCodeTextField" layoutX="26.0" layoutY="79.0" onKeyTyped="#onKeyTypedInMain" prefHeight="25.0" prefWidth="230.0" promptText="Item Code" />
+            <TextField fx:id="memberIdentifierTextField" layoutX="26.0" layoutY="113.0" onKeyTyped="#onKeyTypedInMain" prefHeight="25.0" prefWidth="230.0" promptText="Member Identifier" />
+            <Button fx:id="lendButton" disable="true" layoutX="28.0" layoutY="148.0" mnemonicParsing="false" onAction="#onButtonClickedInMain" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #3d92e7;" text="Lend Item" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Label fx:id="labelLending" layoutX="26.0" layoutY="188.0" textFill="RED" />
+            <Label fx:id="labelReceive" layoutX="325.0" layoutY="153.0" textFill="RED" />
+         </children></Pane>
+      <Pane fx:id="secondPane" layoutY="64.0" prefHeight="336.0" prefWidth="600.0" visible="false">
+         <children>
+            <Label layoutX="22.0" layoutY="14.0" text="Items">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Button fx:id="addItemButton" layoutX="277.0" layoutY="286.0" mnemonicParsing="false" onAction="#openNewItemPane" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #3d92e7;" text="Add Item" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <TableView fx:id="itemTable" editable="true" layoutX="22.0" layoutY="53.0" onMouseClicked="#enableEditAndDelete" prefHeight="223.0" prefWidth="554.0">
+              <columns>
+                <TableColumn fx:id="codeColumn" prefWidth="100.0" text="Item Code" />
+                <TableColumn fx:id="availableColumn" prefWidth="100.0" text="Available" />
+                  <TableColumn fx:id="titleColumn" prefWidth="200.0" text="Title" />
+                  <TableColumn fx:id="authorColumn" prefWidth="154.0" text="Author" />
+              </columns>
+            </TableView>
+            <Button fx:id="editItemButton" disable="true" layoutX="380.0" layoutY="286.0" mnemonicParsing="false" onAction="#openNewItemPane" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: grey;" text="Edit Item" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="deleteItemButton" disable="true" layoutX="484.0" layoutY="286.0" mnemonicParsing="false" onAction="#deleteItemOrMember" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #e77777;" text="Delete Item" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="searchItemTextField" layoutX="22.0" layoutY="287.0" onKeyTyped="#searchKeyTyped" promptText="Search..." />
+         </children>
+      </Pane>
+      <Pane fx:id="addItemPane" layoutX="156.0" layoutY="96.0" prefHeight="257.0" prefWidth="283.0" style="-fx-background-color: white; -fx-border-color: black;" visible="false">
+         <children>
+            <Button fx:id="confirmItemButton" disable="true" layoutX="14.0" layoutY="216.0" mnemonicParsing="false" onAction="#confirmItemAction" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #3d92e7;" text="Add Item" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <Button fx:id="firstCancelButton" layoutX="177.0" layoutY="216.0" mnemonicParsing="false" onAction="#cancelItemAction" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #e77777;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="titleTextField" layoutX="40.0" layoutY="73.0" onKeyTyped="#enableAddItemButton" prefHeight="25.0" prefWidth="203.0" promptText="Title" />
+            <TextField fx:id="authorTextField" layoutX="40.0" layoutY="129.0" onKeyTyped="#enableAddItemButton" prefHeight="25.0" prefWidth="203.0" promptText="Author" />
+            <Label layoutX="13.0" layoutY="14.0" text="Add Item">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="editItemPane" layoutX="166.0" layoutY="106.0" prefHeight="257.0" prefWidth="283.0" style="-fx-background-color: white; -fx-border-color: black;" visible="false">
+         <children>
+            <Button fx:id="confirmItemEditButton" layoutX="14.0" layoutY="216.0" mnemonicParsing="false" onAction="#confirmItemAction" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #3d92e7;" text="Edit Item" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="secondCancelButton" layoutX="177.0" layoutY="216.0" mnemonicParsing="false" onAction="#cancelItemAction" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #e77777;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="titleTextField2" layoutX="40.0" layoutY="56.0" prefHeight="25.0" prefWidth="203.0" promptText="Title" />
+            <TextField fx:id="authorTextField2" layoutX="40.0" layoutY="95.0" prefHeight="25.0" prefWidth="203.0" promptText="Author" />
+            <Label layoutX="13.0" layoutY="14.0" text="Edit Item">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="itemCheckBox" layoutX="40.0" layoutY="135.0" mnemonicParsing="false" onAction="#clickCheckBox" text="Available?" />
+            <DatePicker fx:id="itemDatePicker" layoutX="40.0" layoutY="161.0" promptText="Lent date" visible="false" />
+         </children>
+      </Pane>
+      <Pane fx:id="thirdPane" layoutY="64.0" prefHeight="336.0" prefWidth="600.0" visible="false">
+         <children>
+            <Label layoutX="22.0" layoutY="14.0" text="Members">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Button fx:id="addMemberButton" layoutX="258.0" layoutY="286.0" mnemonicParsing="false" onAction="#openNewMemberPane" prefHeight="27.0" prefWidth="96.0" style="-fx-background-color: #3d92e7;" text="Add Member" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <TableView fx:id="memberTable" layoutX="22.0" layoutY="53.0" onMouseClicked="#enableEditAndDelete" prefHeight="223.0" prefWidth="554.0">
+               <columns>
+                  <TableColumn fx:id="identifierColumn" prefWidth="100.0" text="Identifier" />
+                  <TableColumn fx:id="firstNameColumn" prefWidth="150.0" text="First Name" />
+                  <TableColumn fx:id="lastNameColumn" prefWidth="150.0" text="Last Name" />
+                  <TableColumn fx:id="birthDateColumn" prefWidth="154.0" text="Birth Date" />
+               </columns>
+            </TableView>
+            <Button fx:id="editMemberButton" disable="true" layoutX="364.0" layoutY="286.0" mnemonicParsing="false" onAction="#openNewMemberPane" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: grey;" text="Edit Member" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="deleteMemberButton" disable="true" layoutX="469.0" layoutY="286.0" mnemonicParsing="false" onAction="#deleteItemOrMember" prefHeight="27.0" prefWidth="107.0" style="-fx-background-color: #e77777;" text="Delete Member" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="searchMemberTextField" onKeyTyped="#searchKeyTyped" layoutX="22.0" layoutY="287.0" promptText="Search..." />
+         </children>
+      </Pane>
+            <Pane fx:id="addMemberPane" layoutX="156.0" layoutY="96.0" prefHeight="257.0" prefWidth="283.0" style="-fx-background-color: white; -fx-border-color: black;" visible="false">
+               <children>
+                  <Button fx:id="confirmMemberButton" disable="true" layoutX="14.0" layoutY="216.0" mnemonicParsing="false" onAction="#confirmMemberAction" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #3d92e7;" text="Add Member" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="thirdCancelButton" layoutX="177.0" layoutY="216.0" mnemonicParsing="false" onAction="#cancelMemberAction" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #e77777;" text="Cancel" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="firstNameTextField" layoutX="40.0" layoutY="58.0" onKeyTyped="#enableAddMemberButton" prefHeight="25.0" prefWidth="203.0" promptText="First Name" />
+                  <TextField fx:id="lastNameTextField" layoutX="40.0" layoutY="97.0" onKeyTyped="#enableAddMemberButton" prefHeight="25.0" prefWidth="203.0" promptText="Last Name" />
+                  <Label layoutX="13.0" layoutY="14.0" text="Add Member">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+            <DatePicker fx:id="memberDatePicker" layoutX="40.0" layoutY="135.0" />
+               </children>
+            </Pane>
+      <Pane fx:id="editMemberPane" layoutX="156.0" layoutY="96.0" prefHeight="257.0" prefWidth="283.0" style="-fx-background-color: white; -fx-border-color: black;" visible="false">
+         <children>
+            <Button fx:id="confirmMemberEditButton" disable="false" layoutX="14.0" layoutY="216.0" mnemonicParsing="false" onAction="#confirmMemberAction" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #3d92e7;" text="Edit Member" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="fourthCancelButton" layoutX="177.0" layoutY="216.0" mnemonicParsing="false" onAction="#cancelMemberAction" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #e77777;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="firstNameTextField2" layoutX="40.0" layoutY="58.0" onKeyTyped="#enableAddMemberButton" prefHeight="25.0" prefWidth="203.0" promptText="First Name" />
+            <TextField fx:id="lastNameTextField2" layoutX="40.0" layoutY="97.0" onKeyTyped="#enableAddMemberButton" prefHeight="25.0" prefWidth="203.0" promptText="Last Name" />
+            <Label layoutX="13.0" layoutY="14.0" text="Edit Member">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="memberEditDatePicker" layoutX="40.0" layoutY="135.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>
